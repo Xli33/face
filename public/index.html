@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title>face</title>
+    <script src="https://cdn.staticfile.org/vue/3.2.20/vue.runtime.<%= NODE_ENV === 'production' ? 'global.prod' : 'global' %>.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/4.0.6/vue-router.global.prod.min.js"></script>
+    <script>
+      (function() {
+        var scr,
+          doc = document,
+          path = "backup/",
+          load = function(n, f) {
+            !window[n] &&
+              document.write('<script src="' + path + f + '.js"><\/script>');
+          };
+        [
+          { n: "Vue", f: "vue.3.2.20" },
+          { n: "VueRouter", f: "vue-router.4.0.6" }
+        ].forEach(function(e) {
+          load(e.n, e.f);
+        });
+      })();
+      /* (function () {
+        var search = location.hash.match(/\?.+/);
+        if (!search) return (_query = {});
+        var arr = search[0]
+            .replace("?", "")
+            .split("&")
+            .filter(function (e) {
+              return e;
+            }),
+          query = {},
+          each;
+        arr.forEach(function (e) {
+          each = e.split("=");
+          query[each[0]] = each[1] || "";
+        });
+        _query = query;
+      })(); */
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but the page doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <%= VUE_APP_PACKENV !== 'formal' ? '<script src="https://cdn.staticfile.org/vConsole/3.4.1/vconsole.min.js"></script>' : '' %>
+    <%= VUE_APP_PACKENV !== 'formal' ? '<script>(navigator.userAgent.includes("Android")||navigator.userAgent.includes("iPhone"))&&new VConsole();</script>' : '' %>
+    <script src="face-api.min.js"></script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
